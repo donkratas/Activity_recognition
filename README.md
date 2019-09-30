@@ -1,8 +1,8 @@
 
-#Introduction
+# Introduction
 This dataset contains the motion data of 14 healthy older aged between 66 and 86 years old, performed broadly scripted activities using a batteryless, wearable sensor on top of their clothing at sternum level.  
 
-##Preparations
+## Preparations
 
 Libraries that will be used for project:
 
@@ -97,7 +97,7 @@ cat("Number of missing values in dataset:",  sum(is.na(data)))
 Number of missing values in dataset: 0
 ```
 
-## Preparing data
+### Preparing data
 
 ```r
 for(i in 1:8){
@@ -115,7 +115,7 @@ data$Activity_Label <- as.factor(data$Activity_Label)
 data$id <- as.factor(data$id)
 ```
 
-# Machine learning
+## Machine learning
 
 
 ```r
@@ -125,7 +125,7 @@ train <- data[ind == 1, ]
 test <- data[ind==2, ]
 ```
 
-## Multinomial logistic regression
+### Multinomial logistic regression
 
 
 ```r
@@ -208,7 +208,7 @@ cat("F1 score:",  mlg_f1)
 ## F1 score: 0.8124055
 ```
 
-## randomForest
+### randomForest
 
 
 ```r
@@ -272,7 +272,7 @@ cat(" F1 score:",rf_f1)
 ##  F1 score: 0.9578399
 ```
 
-## Decision tree
+### Decision tree
 
 ```r
 dt_model <- rpart(Activity_Label ~.,data = train)
@@ -335,7 +335,7 @@ cat(" F1 score:", dt_f1)
 ##  F1 score: 0.7937822
 ```
 
-## K-nearest neighbors
+### K-nearest neighbors
 
 ```r
 # 
@@ -357,7 +357,7 @@ cat(" F1 score:", dt_f1)
 # knn_f1
 ```
 
-## SVM
+### SVM
 
 
 ```r
@@ -438,7 +438,7 @@ cat(" F1 score:", svm_f1)
 ##  F1 score: 0.8615125
 ```
 
-## Neural Network
+### Neural Network
 
 
 ```r
@@ -507,7 +507,7 @@ nn_f1
 ## [1] 0.932746
 ```
 
-## XGBoost
+### XGBoost
 
 
 ```r
