@@ -27,9 +27,8 @@ library(tensorflow)
 
 
 ```r
-setwd("S2_Dataset/")
 reading_data_1 <- function(){
-  path <- "C:\\Users\\Lukas\\Desktop\\R2/Activity_recognition/S2_Dataset/"
+  path <- "/S2_Dataset/"
   files <- list.files(path, "p")
   l <- lapply(files, fread, header = FALSE, sep = ",", stringsAsFactors = FALSE, showProgress = FALSE)
   data <- do.call(rbind, l)
@@ -109,8 +108,8 @@ for(i in 1:8){
 
 names(data) <- c('Time','Acc.Front','Acc.vert','Acc.Lat','id','RSSI','Phase','Freq','Activity_Label')
 
-data[,9] <- as.numeric(data[,9]) -1 #Sumazinamas vienas lygis del NN, XgbBoost
-data[,5] <- as.numeric(data[,5]) -1 #Sumazinamas vienas lygis del NN, XgbBoost
+data[,9] <- as.numeric(data[,9]) -1 #Reducing one factor level for NN, XgbBoost
+data[,5] <- as.numeric(data[,5]) -1 #Reducing one factor level for NN, XgbBoost
 data$Activity_Label <- as.factor(data$Activity_Label)
 data$id <- as.factor(data$id)
 ```
